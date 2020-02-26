@@ -90,8 +90,13 @@ namespace CppBrowser.Core
             if (System.IO.File.Exists(dbfile))
                 return dbfile;
 
+            string version =_applicationObject.Version;
+            if (2 < version.Length)
+                version = version.Substring(0, 2);
+            version = "v" + version;
+
             dbfile = System.IO.Path.GetDirectoryName(_applicationObject.Solution.FullName);
-            dbfile = System.IO.Path.Combine(dbfile, ".vs", System.IO.Path.GetFileNameWithoutExtension(_applicationObject.Solution.FileName), "v15");
+            dbfile = System.IO.Path.Combine(dbfile, ".vs", System.IO.Path.GetFileNameWithoutExtension(_applicationObject.Solution.FileName), version);
             dbfile = System.IO.Path.Combine(dbfile, "Browse.VC.db");
             return dbfile;
         }
