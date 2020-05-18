@@ -115,6 +115,7 @@ namespace CppBrowser.Core
         private void SolutionEvents_Closing()
         {
             SolutionChanged();
+            m_state.SaveState();
         }
 
         private void SolutionEvents_ProjectAdded(Project project)

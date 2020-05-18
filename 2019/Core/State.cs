@@ -20,18 +20,6 @@ namespace CppBrowser.Core
             }
         }
 
-        ~State()
-        {
-            try
-            {
-                SaveState();
-            }
-            catch (Exception)
-            {
-
-            }
-        }
-
         private void LoadState()
         {
             RegistryKey regKey = Registry.CurrentUser;
@@ -153,29 +141,36 @@ namespace CppBrowser.Core
             }
         }
 
-        private void SaveState()
+        public void SaveState()
         {
-            RegistryKey regKey = Registry.CurrentUser;
-            regKey = regKey.CreateSubKey(State.RegKey);
-            if (null != regKey)
+            try
             {
-                regKey.SetValue(Reg_ShowParamsKey, ShowParams);
-                regKey.SetValue(Reg_ShowNamespaceKey, ShowNamespace);
-                regKey.SetValue(Reg_SortByNameKey, SortByName);
-                regKey.SetValue(Reg_LockFindbar, LockFindbar);
-                regKey.SetValue(Reg_DictInfo, MakeDictionaryString(m_ItemsInfo));
-                regKey.SetValue(Reg_BackColor1, BackColor1.ToArgb());
-                regKey.SetValue(Reg_BackColor2, BackColor2.ToArgb());
-                regKey.SetValue(Reg_SelectedColor, SelectionColor.ToArgb());
-                regKey.SetValue(Reg_FindColor, FindColor.ToArgb());
-                regKey.SetValue(Reg_Font, TypeDescriptor.GetConverter(typeof(Font)).ConvertToString(Font));
-                regKey.SetValue(Reg_CaseSensitiveFind, CaseSensitiveFind);
-                regKey.SetValue(Reg_SelectCurrentItem, SelectCurrentItem);
-                regKey.SetValue(Reg_FindOnlyName, FindOnlyName);
-                regKey.SetValue(Reg_WindowLocation, Convert.ToInt16(WindowLocation));
-                regKey.SetValue(Reg_WindowPos, TypeDescriptor.GetConverter(typeof(Point)).ConvertToString(WindowPos));
-                regKey.SetValue(Reg_Version, 100);
-                regKey.SetValue(Reg_ItemsOrder, MakeListString(ItemsOrder));
+                RegistryKey regKey = Registry.CurrentUser;
+                regKey = regKey.CreateSubKey(State.RegKey);
+                if (null != regKey)
+                {
+                    regKey.SetValue(Reg_ShowParamsKey, ShowParams);
+                    regKey.SetValue(Reg_ShowNamespaceKey, ShowNamespace);
+                    regKey.SetValue(Reg_SortByNameKey, SortByName);
+                    regKey.SetValue(Reg_LockFindbar, LockFindbar);
+                    regKey.SetValue(Reg_DictInfo, MakeDictionaryString(m_ItemsInfo));
+                    regKey.SetValue(Reg_BackColor1, BackColor1.ToArgb());
+                    regKey.SetValue(Reg_BackColor2, BackColor2.ToArgb());
+                    regKey.SetValue(Reg_SelectedColor, SelectionColor.ToArgb());
+                    regKey.SetValue(Reg_FindColor, FindColor.ToArgb());
+                    regKey.SetValue(Reg_Font, TypeDescriptor.GetConverter(typeof(Font)).ConvertToString(Font));
+                    regKey.SetValue(Reg_CaseSensitiveFind, CaseSensitiveFind);
+                    regKey.SetValue(Reg_SelectCurrentItem, SelectCurrentItem);
+                    regKey.SetValue(Reg_FindOnlyName, FindOnlyName);
+                    regKey.SetValue(Reg_WindowLocation, Convert.ToInt16(WindowLocation));
+                    regKey.SetValue(Reg_WindowPos, TypeDescriptor.GetConverter(typeof(Point)).ConvertToString(WindowPos));
+                    regKey.SetValue(Reg_Version, 100);
+                    regKey.SetValue(Reg_ItemsOrder, MakeListString(ItemsOrder));
+                }
+            }
+            catch (Exception)
+            {
+
             }
         }
 
