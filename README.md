@@ -1,2 +1,2 @@
 # CppBrowser
-CppBrowser extension for VisualStudio 2017
+Extension for VisualStudio 2019 which lets quickly navigate code
