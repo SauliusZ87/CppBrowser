@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CommandTable xmlns="http://schemas.microsoft.com/VisualStudio/2005-10-18/CommandTable" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <Extern href="stdidcmd.h"/>
+  <Extern href="vsshlids.h"/>
+
+  <Commands package="guidCppBrowserPackage">
+    <Groups>
+      <Group guid="guidCppBrowserPackageCmdSet" id="MyMenuGroup" priority="0x0100">
+        <Parent guid="guidSHLMainMenu" id="IDM_VS_MENU_TOOLS"/>
+      </Group>
+    </Groups>
+
+    <Buttons>
+      <Button guid="guidCppBrowserPackageCmdSet" id="CppBrowserId" priority="0x0100" type="Button">
+        <Parent guid="guidCppBrowserPackageCmdSet" id="MyMenuGroup" />
+        <Icon guid="guidImages" id="bmpPic" />
+        <Strings>
+          <ButtonText>CppBrowser</ButtonText>
+        </Strings>
+      </Button>
+    </Buttons>
+
+    <Bitmaps>
+      <Bitmap guid="guidImages" href="Resources\CppBrowser.png" usedList="bmpPic"/>
+    </Bitmaps>
+  </Commands>
+
+  <Symbols>
+    <GuidSymbol name="guidCppBrowserPackage" value="{70d3e9b6-8f8a-4099-8493-bbae33a3f549}" />
+
+    <GuidSymbol name="guidCppBrowserPackageCmdSet" value="{3b2e08f9-6eb2-4eff-b86a-5dc392e07047}">
+      <IDSymbol name="MyMenuGroup" value="0x1020" />
+      <IDSymbol name="CppBrowserId" value="0x0100" />
+    </GuidSymbol>
+
+    <GuidSymbol name="guidImages" value="{ee15cfd5-f45e-49ee-849f-068099b9363c}" >
+      <IDSymbol name="bmpPic" value="1" />
+    </GuidSymbol>
+  </Symbols>
+</CommandTable>
